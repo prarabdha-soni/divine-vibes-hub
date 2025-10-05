@@ -1,38 +1,22 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 const AudioPlayer = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
-  const [hasPlayed, setHasPlayed] = useState(false);
 
   useEffect(() => {
-    // Play audio on first user interaction
+    // Auto-play welcome audio on mount
     const playAudio = async () => {
-      if (audioRef.current && !hasPlayed) {
-        try {
+      try {
+        if (audioRef.current) {
           await audioRef.current.play();
-          setHasPlayed(true);
-        } catch (error) {
-          console.log("Audio play error:", error);
         }
+      } catch (error) {
+        console.log("Audio autoplay was prevented:", error);
       }
     };
 
-    // Listen for any user interaction
-    const handleInteraction = () => {
-      playAudio();
-      // Remove listeners after first play
-      document.removeEventListener("click", handleInteraction);
-      document.removeEventListener("touchstart", handleInteraction);
-    };
-
-    document.addEventListener("click", handleInteraction);
-    document.addEventListener("touchstart", handleInteraction);
-
-    return () => {
-      document.removeEventListener("click", handleInteraction);
-      document.removeEventListener("touchstart", handleInteraction);
-    };
-  }, [hasPlayed]);
+    playAudio();
+  }, []);
 
   return (
     <audio
