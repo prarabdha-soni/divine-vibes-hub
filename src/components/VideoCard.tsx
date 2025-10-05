@@ -1,10 +1,13 @@
 import { Play } from "lucide-react";
+import { useState } from "react";
+import VideoPlayerDialog from "./VideoPlayerDialog";
 
 interface Video {
   id: string;
   title: string;
   thumbnail: string;
   duration: string;
+  videoUrl: string;
 }
 
 interface VideoCardProps {
@@ -12,8 +15,11 @@ interface VideoCardProps {
 }
 
 const VideoCard = ({ video }: VideoCardProps) => {
+  const [isPlayerOpen, setIsPlayerOpen] = useState(false);
+
   return (
-    <div className="group cursor-pointer">
+    <>
+      <div className="group cursor-pointer" onClick={() => setIsPlayerOpen(true)}>
       <div className="relative aspect-video rounded-lg overflow-hidden bg-muted shadow-soft">
         <img 
           src={video.thumbnail} 
@@ -38,6 +44,14 @@ const VideoCard = ({ video }: VideoCardProps) => {
         {video.title}
       </h4>
     </div>
+
+    <VideoPlayerDialog
+      isOpen={isPlayerOpen}
+      onClose={() => setIsPlayerOpen(false)}
+      videoUrl={video.videoUrl}
+      title={video.title}
+    />
+    </>
   );
 };
 

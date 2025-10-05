@@ -6,6 +6,7 @@ interface Video {
   title: string;
   thumbnail: string;
   duration: string;
+  videoUrl: string;
 }
 
 interface ContentRowProps {
