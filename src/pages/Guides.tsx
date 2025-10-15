@@ -157,23 +157,23 @@ const Guides = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-orange-50 via-amber-50 to-orange-100 text-orange-900">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white">
       <div className="px-4 py-6 space-y-6">
         {/* Professional Header */}
-        <div className="text-center">
-          <h1 className="text-3xl font-bold text-orange-900 mb-2">Browse Spiritual Guides</h1>
-          <p className="text-orange-700">Discover authentic spiritual teachers and their wisdom</p>
-          <div className="w-16 h-1 bg-gradient-to-r from-orange-600 to-amber-600 mx-auto mt-4 rounded-full"></div>
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold text-white mb-3">Browse Spiritual Guides</h1>
+          <p className="text-lg text-gray-300 mb-4">Discover authentic spiritual teachers and their wisdom</p>
+          <div className="w-20 h-1 bg-gradient-to-r from-orange-600 to-amber-600 mx-auto rounded-full"></div>
         </div>
 
         {/* Enhanced Search Bar */}
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-orange-600 w-5 h-5" />
+        <div className="relative max-w-md mx-auto">
+          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
           <Input
             placeholder="Search for spiritual guides..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 bg-white/80 border-orange-300 text-orange-900 placeholder:text-orange-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 h-12 rounded-xl"
+            className="pl-12 pr-4 py-3 bg-gray-800 border-gray-600 text-white placeholder:text-gray-400 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 rounded-xl shadow-lg"
           />
         </div>
 
@@ -189,7 +189,7 @@ const Guides = () => {
                 className={`whitespace-nowrap px-4 py-2 ${
                   selectedFilter === filter
                     ? "bg-orange-600 hover:bg-orange-700 text-white shadow-lg"
-                    : "bg-white/80 border-orange-300 text-orange-700 hover:bg-orange-50 hover:text-orange-900"
+                    : "bg-gray-800 border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white"
                 }`}
               >
                 {filter}
@@ -202,11 +202,11 @@ const Guides = () => {
         <section>
           <div className="grid grid-cols-2 gap-4">
             {filteredTeachers.map((teacher) => (
-              <Card key={teacher.id} className="bg-white/80 border-orange-200 overflow-hidden hover:bg-white/90 transition-all duration-300 group cursor-pointer">
+              <Card key={teacher.id} className="bg-gray-800 border-gray-700 overflow-hidden hover:bg-gray-700 transition-all duration-300 hover:shadow-xl hover:shadow-orange-500/10 group cursor-pointer">
                 <CardContent className="p-4">
                   {/* Three dots menu */}
                   <div className="flex justify-end mb-3">
-                    <Button variant="ghost" size="sm" className="p-1 text-orange-700 hover:bg-orange-100">
+                    <Button variant="ghost" size="sm" className="p-1 text-gray-400 hover:bg-gray-600">
                       <MoreHorizontal className="w-4 h-4" />
                     </Button>
                   </div>
@@ -217,7 +217,7 @@ const Guides = () => {
                       <img 
                         src={teacher.image} 
                         alt={teacher.name}
-                        className="w-24 h-24 rounded-full object-cover border-2 border-orange-300"
+                        className="w-24 h-24 rounded-full object-cover border-2 border-orange-400"
                       />
                       {/* Follow Button Overlay */}
                       <div className="absolute -bottom-2 -right-2">
@@ -244,9 +244,9 @@ const Guides = () => {
                   
                   {/* Teacher Info */}
                   <div className="text-center">
-                    <h3 className="font-bold text-lg text-orange-900 mb-1 group-hover:text-orange-600 transition-colors duration-300">{teacher.name}</h3>
-                    <p className="text-sm text-orange-700 mb-2">{teacher.title}</p>
-                    <div className="flex items-center justify-center gap-2 text-xs text-orange-600">
+                    <h3 className="font-bold text-lg text-white mb-1 group-hover:text-orange-400 transition-colors duration-300">{teacher.name}</h3>
+                    <p className="text-sm text-gray-300 mb-2">{teacher.title}</p>
+                    <div className="flex items-center justify-center gap-2 text-xs text-orange-400">
                       <div className="flex items-center gap-1">
                         <Star className="w-3 h-3 fill-current text-orange-500" />
                         <span>{teacher.rating}</span>
@@ -267,16 +267,16 @@ const Guides = () => {
         {/* Enhanced Empty State */}
         {filteredTeachers.length === 0 && (
           <div className="text-center py-16">
-            <div className="w-20 h-20 bg-gradient-to-br from-amber-600/20 to-orange-600/20 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Search className="w-10 h-10 text-amber-400" />
+            <div className="w-20 h-20 bg-gradient-to-br from-orange-600/20 to-amber-600/20 rounded-full flex items-center justify-center mx-auto mb-6">
+              <Search className="w-10 h-10 text-orange-400" />
             </div>
             <h3 className="text-xl font-semibold text-white mb-3">No guides found</h3>
-            <p className="text-gray-400 mb-6 max-w-sm mx-auto">
+            <p className="text-gray-300 mb-6 max-w-sm mx-auto">
               Try adjusting your search terms or explore different categories to discover spiritual teachers.
             </p>
             <Button 
               onClick={() => setSelectedFilter("Trending")}
-              className="bg-amber-600 hover:bg-amber-700 text-white"
+              className="bg-orange-600 hover:bg-orange-700 text-white"
             >
               View Trending Guides
             </Button>
