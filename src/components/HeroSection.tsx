@@ -9,7 +9,7 @@ const HeroSection = () => {
       <div className="absolute inset-0">
         <img 
           src={heroImage} 
-          alt="Radha Krishna Divine Love"
+          alt="Radha Krishna Sanatan Love"
           className="w-full h-full object-cover"
         />
         {/* Gradient Overlay */}
@@ -21,7 +21,7 @@ const HeroSection = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-2xl space-y-4">
             <h2 className="text-4xl md:text-6xl font-bold text-foreground drop-shadow-lg">
-              Divine Love
+              Sanatan Love
             </h2>
             <p className="text-lg md:text-xl text-foreground/90 drop-shadow-md">
               Experience the eternal love story of Radha and Krishna through sacred teachings, devotional music, and timeless wisdom.
