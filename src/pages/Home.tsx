@@ -175,7 +175,24 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white">
-      <div className="px-4 py-6 space-y-8">
+      {/* Netflix-style Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-orange-900/95 to-transparent backdrop-blur-sm">
+        <div className="flex items-center justify-between px-4 py-4">
+          <div className="flex items-center space-x-4">
+            <h1 className="text-2xl font-bold text-orange-50">Sanatan Secret</h1>
+          </div>
+          <div className="flex items-center space-x-4">
+            <Button variant="ghost" size="sm" className="text-orange-50 hover:text-orange-200">
+              Browse
+            </Button>
+            <Button variant="ghost" size="sm" className="text-orange-50 hover:text-orange-200">
+              Search
+            </Button>
+          </div>
+        </div>
+      </header>
+
+      <div className="px-4 py-6 space-y-8 pt-20">
         {/* Spiritual Hero Section */}
         <div className="relative min-h-[60vh] flex items-center justify-center text-center">
                   {/* Background with YouTube thumbnail */}
