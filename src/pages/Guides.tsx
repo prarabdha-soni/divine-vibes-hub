@@ -6,6 +6,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 // Import guide images
+import baba1 from "@/assets/baba-1.png";
+import baba2 from "@/assets/baba-2.png";
+import baba3 from "@/assets/baba-3.png";
+import baba4 from "@/assets/baba-4.png";
+import baba5 from "@/assets/baba-5.png";
+import baba6 from "@/assets/baba-6.png";
 import premanand1 from "@/assets/premanand-1.jpg";
 import premanand2 from "@/assets/premanand-2.jpg";
 import premanand3 from "@/assets/premanand-3.jpg";
@@ -19,14 +25,17 @@ const Guides = () => {
 
   const filters = ["Trending", "Bhakti", "Yoga Masters", "Meditation", "Wisdom"];
 
-  // Authentic Indian spiritual teachers with proper images
+  // Array of baba images for random selection
+  const babaImages = [baba5, baba6, baba1, baba2, baba3, baba4];
+
+  // Spiritual teachers with random baba images
   const spiritualTeachers = [
     {
       id: "1",
-      name: "Swami Muktananda",
-      title: "Meditation Master",
-      image: "https://images.unsplash.com/photo-1692010123456-teILEdB9WFA?w=400&h=400&fit=crop&crop=face",
-      category: "Yoga Masters",
+      name: "Pradeep Mishra",
+      title: "Shiv Mahapuran Katha",
+      image: babaImages[0], // baba5
+      category: "Bhakti",
       followers: "2.1M",
       rating: 4.8,
       isFollowing: false
@@ -35,7 +44,7 @@ const Guides = () => {
       id: "2", 
       name: "Premand Maharaj",
       title: "Spiritual Teacher",
-      image: "https://images.unsplash.com/photo-1692010123456-teILEdB9WFA?w=400&h=400&fit=crop&crop=face",
+      image: babaImages[1], // baba6
       category: "Yoga Masters",
       followers: "850K",
       rating: 4.7,
@@ -45,7 +54,7 @@ const Guides = () => {
       id: "3",
       name: "Gaur Gopal Das", 
       title: "Monk & Motivator",
-      image: "https://images.unsplash.com/photo-1692010123456-teILEdB9WFA?w=400&h=400&fit=crop&crop=face",
+      image: babaImages[2], // baba3
       category: "Bhakti",
       followers: "3.2M",
       rating: 4.9,
@@ -55,7 +64,7 @@ const Guides = () => {
       id: "4",
       name: "Sri Sri Ravi Shankar",
       title: "Spiritual Leader",
-      image: "https://images.unsplash.com/photo-1692010123456-teILEdB9WFA?w=400&h=400&fit=crop&crop=face",
+      image: babaImages[3], // baba4
       category: "Bhakti",
       followers: "1.8M",
       rating: 4.6,
@@ -65,7 +74,7 @@ const Guides = () => {
       id: "5",
       name: "Amma",
       title: "Divine Mother",
-      image: "https://images.unsplash.com/photo-1692010123456-teILEdB9WFA?w=400&h=400&fit=crop&crop=face",
+      image: babaImages[0], // baba1
       category: "Bhakti",
       followers: "1.5M",
       rating: 4.8,
@@ -75,7 +84,7 @@ const Guides = () => {
       id: "6",
       name: "Sadhguru",
       title: "Mystic & Visionary",
-      image: "https://images.unsplash.com/photo-1692010123456-teILEdB9WFA?w=400&h=400&fit=crop&crop=face",
+      image: babaImages[1], // baba2
       category: "Meditation",
       followers: "2.3M",
       rating: 4.7,
@@ -85,7 +94,7 @@ const Guides = () => {
       id: "7",
       name: "Swami Vivekananda",
       title: "Spiritual Leader",
-      image: "https://images.unsplash.com/photo-1692010123456-teILEdB9WFA?w=400&h=400&fit=crop&crop=face",
+      image: babaImages[2], // baba3
       category: "Yoga Masters",
       followers: "650K",
       rating: 4.5,
@@ -95,7 +104,7 @@ const Guides = () => {
       id: "8",
       name: "Paramahansa Yogananda",
       title: "Yoga Master",
-      image: "https://images.unsplash.com/photo-1692010123456-teILEdB9WFA?w=400&h=400&fit=crop&crop=face",
+      image: babaImages[3], // baba4
       category: "Wisdom",
       followers: "1.2M",
       rating: 4.8,
@@ -105,7 +114,7 @@ const Guides = () => {
       id: "9",
       name: "Ram Dass",
       title: "Spiritual Teacher",
-      image: "https://images.unsplash.com/photo-1692010123456-teILEdB9WFA?w=400&h=400&fit=crop&crop=face",
+      image: babaImages[0], // baba1
       category: "Meditation",
       followers: "420K",
       rating: 4.6,
@@ -115,7 +124,7 @@ const Guides = () => {
       id: "10",
       name: "Anandamayi Ma",
       title: "Divine Mother",
-      image: "https://images.unsplash.com/photo-1692010123456-teILEdB9WFA?w=400&h=400&fit=crop&crop=face",
+      image: babaImages[1], // baba2
       category: "Bhakti",
       followers: "380K",
       rating: 4.9,
@@ -125,7 +134,7 @@ const Guides = () => {
       id: "11",
       name: "Osho",
       title: "Mystic & Philosopher",
-      image: "https://images.unsplash.com/photo-1692010123456-teILEdB9WFA?w=400&h=400&fit=crop&crop=face",
+      image: babaImages[2], // baba3
       category: "Wisdom",
       followers: "1.1M",
       rating: 4.8,
@@ -135,7 +144,7 @@ const Guides = () => {
       id: "12",
       name: "Sri M",
       title: "Spiritual Teacher",
-      image: "https://images.unsplash.com/photo-1692010123456-teILEdB9WFA?w=400&h=400&fit=crop&crop=face",
+      image: babaImages[3], // baba4
       category: "Meditation",
       followers: "950K",
       rating: 4.7,
@@ -148,23 +157,23 @@ const Guides = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white">
+    <div className="min-h-screen bg-gradient-to-b from-orange-50 via-amber-50 to-orange-100 text-orange-900">
       <div className="px-4 py-6 space-y-6">
         {/* Professional Header */}
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-white mb-2">Browse Spiritual Guides</h1>
-          <p className="text-gray-400">Discover authentic spiritual teachers and their wisdom</p>
-          <div className="w-16 h-1 bg-gradient-to-r from-amber-600 to-orange-500 mx-auto mt-4 rounded-full"></div>
+          <h1 className="text-3xl font-bold text-orange-900 mb-2">Browse Spiritual Guides</h1>
+          <p className="text-orange-700">Discover authentic spiritual teachers and their wisdom</p>
+          <div className="w-16 h-1 bg-gradient-to-r from-orange-600 to-amber-600 mx-auto mt-4 rounded-full"></div>
         </div>
 
         {/* Enhanced Search Bar */}
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-orange-600 w-5 h-5" />
           <Input
             placeholder="Search for spiritual guides..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 bg-slate-800/50 border-slate-700 text-white placeholder:text-gray-400 focus:border-amber-500 h-12"
+            className="pl-10 bg-white/80 border-orange-300 text-orange-900 placeholder:text-orange-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 h-12 rounded-xl"
           />
         </div>
 
@@ -179,8 +188,8 @@ const Guides = () => {
                 onClick={() => setSelectedFilter(filter)}
                 className={`whitespace-nowrap px-4 py-2 ${
                   selectedFilter === filter
-                    ? "bg-amber-600 hover:bg-amber-700 text-white shadow-lg"
-                    : "bg-slate-800/50 border-slate-700 text-gray-300 hover:bg-slate-700 hover:text-white"
+                    ? "bg-orange-600 hover:bg-orange-700 text-white shadow-lg"
+                    : "bg-white/80 border-orange-300 text-orange-700 hover:bg-orange-50 hover:text-orange-900"
                 }`}
               >
                 {filter}
@@ -193,11 +202,11 @@ const Guides = () => {
         <section>
           <div className="grid grid-cols-2 gap-4">
             {filteredTeachers.map((teacher) => (
-              <Card key={teacher.id} className="bg-slate-800/50 border-slate-700 overflow-hidden hover:bg-slate-700/50 transition-all duration-300 group cursor-pointer">
+              <Card key={teacher.id} className="bg-white/80 border-orange-200 overflow-hidden hover:bg-white/90 transition-all duration-300 group cursor-pointer">
                 <CardContent className="p-4">
                   {/* Three dots menu */}
                   <div className="flex justify-end mb-3">
-                    <Button variant="ghost" size="sm" className="p-1 text-white hover:bg-slate-700">
+                    <Button variant="ghost" size="sm" className="p-1 text-orange-700 hover:bg-orange-100">
                       <MoreHorizontal className="w-4 h-4" />
                     </Button>
                   </div>
@@ -208,7 +217,7 @@ const Guides = () => {
                       <img 
                         src={teacher.image} 
                         alt={teacher.name}
-                        className="w-24 h-24 rounded-full object-cover border-2 border-slate-600"
+                        className="w-24 h-24 rounded-full object-cover border-2 border-orange-300"
                       />
                       {/* Follow Button Overlay */}
                       <div className="absolute -bottom-2 -right-2">
@@ -217,7 +226,7 @@ const Guides = () => {
                           className={`text-xs px-3 py-1 rounded-full font-medium ${
                             teacher.isFollowing 
                               ? "bg-green-600 hover:bg-green-700 text-white" 
-                              : "bg-amber-600 hover:bg-amber-700 text-white"
+                              : "bg-orange-600 hover:bg-orange-700 text-white"
                           }`}
                         >
                           {teacher.isFollowing ? (
@@ -235,11 +244,11 @@ const Guides = () => {
                   
                   {/* Teacher Info */}
                   <div className="text-center">
-                    <h3 className="font-bold text-lg text-white mb-1 group-hover:text-amber-300 transition-colors duration-300">{teacher.name}</h3>
-                    <p className="text-sm text-gray-400 mb-2">{teacher.title}</p>
-                    <div className="flex items-center justify-center gap-2 text-xs text-gray-500">
+                    <h3 className="font-bold text-lg text-orange-900 mb-1 group-hover:text-orange-600 transition-colors duration-300">{teacher.name}</h3>
+                    <p className="text-sm text-orange-700 mb-2">{teacher.title}</p>
+                    <div className="flex items-center justify-center gap-2 text-xs text-orange-600">
                       <div className="flex items-center gap-1">
-                        <Star className="w-3 h-3 fill-current text-amber-400" />
+                        <Star className="w-3 h-3 fill-current text-orange-500" />
                         <span>{teacher.rating}</span>
                       </div>
                       <span>•</span>
