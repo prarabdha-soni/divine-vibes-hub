@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import ContentRow from "@/components/ContentRow";
 import BottomNav from "@/components/BottomNav";
@@ -40,7 +39,6 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background pb-20">
       <AudioPlayer />
-      <Header />
       <HeroSection />
       
       <div className="space-y-8 pt-8">
