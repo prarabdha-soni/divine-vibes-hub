@@ -176,16 +176,16 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white">
       {/* Netflix-style Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-orange-900/95 to-transparent backdrop-blur-sm">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-amber-900/90 to-transparent backdrop-blur-sm">
         <div className="flex items-center justify-between px-4 py-4">
           <div className="flex items-center space-x-4">
-            <h1 className="text-2xl font-bold text-orange-50">Sanatan Secret</h1>
+            <h1 className="text-2xl font-bold text-white">Sanatan Secret</h1>
           </div>
           <div className="flex items-center space-x-4">
-            <Button variant="ghost" size="sm" className="text-orange-50 hover:text-orange-200">
+            <Button variant="ghost" size="sm" className="text-amber-100 hover:text-amber-300">
               Browse
             </Button>
-            <Button variant="ghost" size="sm" className="text-orange-50 hover:text-orange-200">
+            <Button variant="ghost" size="sm" className="text-amber-100 hover:text-amber-300">
               Search
             </Button>
           </div>
@@ -194,35 +194,37 @@ const Home = () => {
 
       <div className="px-4 py-6 space-y-8 pt-20">
         {/* Spiritual Hero Section */}
-        <div className="relative min-h-[60vh] flex items-center justify-center text-center">
-                  {/* Background with YouTube thumbnail */}
-                  <div className="absolute inset-0">
-                    <img 
-                      src={getYouTubeThumbnail("https://www.youtube.com/watch?v=RJM37jJSWRI")}
-                      alt="Sanatan Love"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+        <div 
+          className="relative min-h-[60vh] flex items-center justify-center text-center cursor-pointer"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setSelectedVideo({
+              id: "hero",
+              title: "राधे तेरे चरणों की - Sanatan Love",
+              subtitle: "Experience the eternal love story of Radha and Krishna",
+              thumbnail: getYouTubeThumbnail("https://www.youtube.com/watch?v=RJM37jJSWRI"),
+              duration: "0:00",
+              views: "0",
+              channel: "Sanatan Love",
+              youtubeUrl: "https://www.youtube.com/watch?v=RJM37jJSWRI"
+            });
+          }}
+        >
+          {/* Background with YouTube thumbnail */}
+          <div className="absolute inset-0">
+            <img 
+              src={getYouTubeThumbnail("https://www.youtube.com/watch?v=RJM37jJSWRI")}
+              alt="Sanatan Love"
+              className="w-full h-full object-cover"
+            />
+          </div>
           
-          {/* Content - Play Button at Bottom */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
-            <Button 
-              size="lg" 
-              className="bg-white text-black hover:bg-gray-100 px-8 py-4 text-lg font-semibold rounded-xl shadow-lg"
-                      onClick={() => setSelectedVideo({
-                        id: "hero",
-                        title: "राधे तेरे चरणों की - Sanatan Love",
-                        subtitle: "Experience the eternal love story of Radha and Krishna",
-                        thumbnail: getYouTubeThumbnail("https://www.youtube.com/watch?v=RJM37jJSWRI"),
-                        duration: "0:00",
-                        views: "0",
-                        channel: "Sanatan Love",
-                        youtubeUrl: "https://www.youtube.com/watch?v=RJM37jJSWRI"
-                      })}
-            >
-              <Play className="w-5 h-5 mr-2" />
-              Play
-            </Button>
+          {/* Play Button Overlay */}
+          <div className="absolute inset-0 flex items-center justify-center z-10">
+            <div className="bg-black/50 rounded-full p-6 hover:bg-black/70 transition-all duration-300">
+              <Play className="w-16 h-16 text-white" />
+            </div>
           </div>
         </div>
 
@@ -304,7 +306,11 @@ const Home = () => {
           {/* Horizontal Scroll Video Cards */}
           <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
             {getFilteredVideos().slice(0, 6).map((video) => (
-              <div key={video.id} className="flex-shrink-0 w-80 group cursor-pointer" onClick={() => setSelectedVideo(video)}>
+              <div key={video.id} className="flex-shrink-0 w-80 group cursor-pointer" onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setSelectedVideo(video);
+              }}>
                 <div className="relative">
                   <img 
                     src={video.thumbnail} 
@@ -376,15 +382,15 @@ const Home = () => {
 
         {/* Video Player Modal */}
         {selectedVideo && (
-          <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-lg w-full max-w-4xl max-h-[90vh] overflow-hidden">
-              <div className="flex items-center justify-between p-4 border-b">
-                <h3 className="text-lg font-semibold text-orange-900">{selectedVideo.title}</h3>
+          <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-[100] p-4">
+            <div className="bg-gray-900 rounded-lg w-full max-w-5xl max-h-[95vh] overflow-hidden shadow-2xl">
+              <div className="flex items-center justify-between p-4 border-b border-gray-700">
+                <h3 className="text-lg font-semibold text-white">{selectedVideo.title}</h3>
                 <Button 
                   variant="ghost" 
                   size="sm" 
                   onClick={() => setSelectedVideo(null)}
-                  className="text-orange-600 hover:text-orange-700"
+                  className="text-gray-400 hover:text-white hover:bg-gray-700"
                 >
                   <X className="w-5 h-5" />
                 </Button>
@@ -399,9 +405,9 @@ const Home = () => {
                   allowFullScreen
                 />
               </div>
-              <div className="p-4">
-                <p className="text-sm text-orange-700 mb-2">{selectedVideo.subtitle}</p>
-                <div className="flex items-center gap-4 text-xs text-orange-600">
+              <div className="p-4 bg-gray-800">
+                <p className="text-sm text-gray-300 mb-2">{selectedVideo.subtitle}</p>
+                <div className="flex items-center gap-4 text-xs text-gray-400">
                   <span>{selectedVideo.duration}</span>
                   <span>{selectedVideo.views} views</span>
                   <span>{selectedVideo.channel}</span>
