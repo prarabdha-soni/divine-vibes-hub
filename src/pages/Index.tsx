@@ -13,11 +13,11 @@ import videoKirtan1 from "@/assets/video-kirtan-1.jpg";
 
 const Index = () => {
   const premandMaharajVideos = [
-    { id: "1", title: "Divine Love - Discourse by Premand Maharaj", thumbnail: videoGuru1, duration: "45:30", videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" },
-    { id: "2", title: "Path to Devotion - Sacred Teachings", thumbnail: videoTeaching1, duration: "38:15", videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" },
-    { id: "3", title: "Understanding Bhakti Yoga", thumbnail: videoGuru1, duration: "52:20", videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" },
-    { id: "4", title: "Radha Krishna Leela Explained", thumbnail: videoTeaching1, duration: "41:05", videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" },
-    { id: "5", title: "Journey to Self-Realization", thumbnail: videoGuru1, duration: "48:45", videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" },
+    { id: "1", title: "#962 Ekantik Vartalaap & Darshan / 06-07-2025", thumbnail: videoGuru1, duration: "45:30", videoUrl: "https://www.youtube.com/watch?v=v_KB_ktJK84" },
+    { id: "2", title: "#806 Ekantik Vartalaap & Darshan / 31-01-2025", thumbnail: videoTeaching1, duration: "38:15", videoUrl: "https://www.youtube.com/watch?v=P1VxhkTgWWA" },
+    { id: "3", title: "ये 11 सावधानियाँ आपके जीवन को खुशियों से भर देंगी", thumbnail: videoGuru1, duration: "52:20", videoUrl: "https://www.youtube.com/watch?v=9oZeaFLRwPw" },
+    { id: "4", title: "भगवान से भी बढ़कर है भगवान का नाम ! नाम जप करने की अद्भुत शक्ति", thumbnail: videoTeaching1, duration: "41:05", videoUrl: "https://www.youtube.com/watch?v=rsN40D2xcdE" },
+    { id: "5", title: "निराश मत होओ, तुम्हारी सारी इच्छा पूरी हो जाएगी !", thumbnail: videoGuru1, duration: "48:45", videoUrl: "https://www.youtube.com/watch?v=EWlYIY-ODfc" },
   ];
 
   const kidsContent = [
@@ -52,9 +52,6 @@ const Index = () => {
       
       <div className="space-y-8 pt-8">
         <ContentRow title="Premand Maharaj Teachings" videos={premandMaharajVideos} />
-        <ContentRow title="Kids Stories & Shorts" videos={kidsContent} />
-        <ContentRow title="Bhajans & Kirtans" videos={bhajansKirtans} />
-        <ContentRow title="Sacred Teachings" videos={teachings} />
       </div>
 
       <BottomNav />
