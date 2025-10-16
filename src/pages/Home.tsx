@@ -206,44 +206,88 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white">
       <div className="px-4 py-6 space-y-8">
-        {/* Spiritual Hero Section */}
-        <div 
-          className="relative min-h-[60vh] flex items-center justify-center text-center cursor-pointer"
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            setSelectedVideo({
-              id: "hero",
-              title: "राधे तेरे चरणों की - Sanatan Love",
-              subtitle: "Experience the eternal love story of Radha and Krishna",
-              thumbnail: getYouTubeThumbnail("https://www.youtube.com/watch?v=RJM37jJSWRI"),
-              duration: "0:00",
-              views: "0",
-              channel: "Sanatan Love",
-              youtubeUrl: "https://www.youtube.com/watch?v=RJM37jJSWRI"
-            });
-          }}
-        >
-          {/* Background with YouTube thumbnail */}
-          <div className="absolute inset-0">
-            <img 
-              src={getYouTubeThumbnail("https://www.youtube.com/watch?v=CILtUr2shKM")}
-              alt="Sanatan Love"
-              className="w-full h-full object-cover"
-            />
+        {/* Featured Hero Videos Carousel */}
+        <section>
+          <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+            {[
+              {
+                id: "hero1",
+                title: "Spiritual Journey - Divine Connection",
+                subtitle: "Connect with the divine through spiritual practices",
+                thumbnail: getYouTubeThumbnail("https://www.youtube.com/watch?v=vYMTVbRsRXo"),
+                duration: "0:00",
+                views: "0",
+                channel: "Sanatan Love",
+                youtubeUrl: "https://www.youtube.com/watch?v=vYMTVbRsRXo"
+              },
+              {
+                id: "hero2",
+                title: "Meditation & Mindfulness - Inner Peace",
+                subtitle: "Find inner peace through meditation and mindfulness",
+                thumbnail: getYouTubeThumbnail("https://www.youtube.com/watch?v=3YLog5mrAYM"),
+                duration: "0:00",
+                views: "0",
+                channel: "Sanatan Love",
+                youtubeUrl: "https://www.youtube.com/watch?v=3YLog5mrAYM"
+              },
+              {
+                id: "hero3",
+                title: "राधे तेरे चरणों की - Sanatan Love",
+                subtitle: "Experience the eternal love story of Radha and Krishna",
+                thumbnail: getYouTubeThumbnail("https://www.youtube.com/watch?v=CILtUr2shKM"),
+                duration: "0:00",
+                views: "0",
+                channel: "Sanatan Love",
+                youtubeUrl: "https://www.youtube.com/watch?v=CILtUr2shKM"
+              }
+            ].map((video) => (
+              <div 
+                key={video.id} 
+                className="flex-shrink-0 w-full max-w-md group cursor-pointer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setSelectedVideo(video);
+                }}
+              >
+                <div className="relative min-h-[50vh] rounded-lg overflow-hidden">
+                  {/* Background with YouTube thumbnail */}
+                  <div className="absolute inset-0">
+                    <img 
+                      src={video.thumbnail}
+                      alt={video.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  
+                  {/* Dark Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent rounded-lg" />
+                  
+                  {/* Play Button at Bottom */}
+                  <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+                    <Button 
+                      size="lg" 
+                      className="bg-white text-black hover:bg-gray-100 px-8 py-4 text-lg font-semibold rounded-xl shadow-lg"
+                    >
+                      <Play className="w-5 h-5 mr-2" />
+                      Play
+                    </Button>
+                  </div>
+                  
+                  {/* Title Overlay */}
+                  <div className="absolute bottom-20 left-4 right-4">
+                    <h3 className="text-white font-bold text-lg leading-tight mb-2">
+                      {video.title}
+                    </h3>
+                    <p className="text-white/90 text-sm">
+                      {video.subtitle}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-          
-          {/* Play Button at Bottom */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
-            <Button 
-              size="lg" 
-              className="bg-white text-black hover:bg-gray-100 px-8 py-4 text-lg font-semibold rounded-xl shadow-lg"
-            >
-              <Play className="w-5 h-5 mr-2" />
-              Play
-            </Button>
-          </div>
-        </div>
+        </section>
 
         {/* Enhanced Discover Guides Section */}
         <section>
@@ -310,10 +354,10 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Premand Maharaj Teachings Section */}
+        {/* Maharaj Teachings Section */}
         <section>
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-white">Premand Maharaj Teachings</h2>
+            <h2 className="text-2xl font-bold text-white">Maharaj Teachings</h2>
             <Button variant="ghost" size="sm" className="text-orange-400 hover:text-orange-300">
               See All &gt;
             </Button>
