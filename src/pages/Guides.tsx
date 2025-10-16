@@ -12,6 +12,8 @@ import baba3 from "@/assets/baba-3.png";
 import baba4 from "@/assets/baba-4.png";
 import baba5 from "@/assets/baba-5.png";
 import baba6 from "@/assets/baba-6.png";
+import osho from "@/assets/osho.png";
+import gaur from "@/assets/gaur.png";
 import premanand1 from "@/assets/premanand-1.jpg";
 import premanand2 from "@/assets/premanand-2.jpg";
 import premanand3 from "@/assets/premanand-3.jpg";
@@ -52,16 +54,26 @@ const Guides = () => {
     },
     {
       id: "3",
+      name: "Osho",
+      title: "Mystic & Philosopher",
+      image: osho,
+      category: "Wisdom",
+      followers: "2.5M",
+      rating: 4.9,
+      isFollowing: false
+    },
+    {
+      id: "4",
       name: "Gaur Gopal Das", 
       title: "Monk & Motivator",
-      image: babaImages[2], // baba3
+      image: gaur,
       category: "Bhakti",
       followers: "3.2M",
       rating: 4.9,
       isFollowing: true
     },
     {
-      id: "4",
+      id: "5",
       name: "Sri Sri Ravi Shankar",
       title: "Spiritual Leader",
       image: babaImages[3], // baba4
@@ -71,7 +83,7 @@ const Guides = () => {
       isFollowing: false
     },
     {
-      id: "5",
+      id: "6",
       name: "Amma",
       title: "Divine Mother",
       image: babaImages[0], // baba1
@@ -81,7 +93,7 @@ const Guides = () => {
       isFollowing: true
     },
     {
-      id: "6",
+      id: "7",
       name: "Sadhguru",
       title: "Mystic & Visionary",
       image: babaImages[1], // baba2
@@ -91,7 +103,7 @@ const Guides = () => {
       isFollowing: false
     },
     {
-      id: "7",
+      id: "8",
       name: "Swami Vivekananda",
       title: "Spiritual Leader",
       image: babaImages[2], // baba3
@@ -101,7 +113,7 @@ const Guides = () => {
       isFollowing: false
     },
     {
-      id: "8",
+      id: "9",
       name: "Paramahansa Yogananda",
       title: "Yoga Master",
       image: babaImages[3], // baba4
@@ -111,7 +123,7 @@ const Guides = () => {
       isFollowing: true
     },
     {
-      id: "9",
+      id: "10",
       name: "Ram Dass",
       title: "Spiritual Teacher",
       image: babaImages[0], // baba1
@@ -121,23 +133,13 @@ const Guides = () => {
       isFollowing: false
     },
     {
-      id: "10",
+      id: "11",
       name: "Anandamayi Ma",
       title: "Divine Mother",
       image: babaImages[1], // baba2
       category: "Bhakti",
       followers: "380K",
       rating: 4.9,
-      isFollowing: false
-    },
-    {
-      id: "11",
-      name: "Osho",
-      title: "Mystic & Philosopher",
-      image: babaImages[2], // baba3
-      category: "Wisdom",
-      followers: "1.1M",
-      rating: 4.8,
       isFollowing: false
     },
     {
@@ -157,23 +159,23 @@ const Guides = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white">
+    <div className="min-h-screen bg-black text-white">
       <div className="px-4 py-6 space-y-6">
         {/* Professional Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-white mb-3">Browse Spiritual Guides</h1>
-          <p className="text-lg text-gray-300 mb-4">Discover authentic spiritual teachers and their wisdom</p>
-          <div className="w-20 h-1 bg-gradient-to-r from-orange-600 to-amber-600 mx-auto rounded-full"></div>
+          <h1 className="text-3xl font-bold text-white mb-3 drop-shadow-lg">Browse Spiritual Guides</h1>
+          <p className="text-lg text-white/80 mb-4">Discover authentic spiritual teachers and their wisdom</p>
+          <div className="w-24 h-1 bg-white mx-auto rounded-full shadow-lg"></div>
         </div>
 
         {/* Enhanced Search Bar */}
         <div className="relative max-w-md mx-auto">
-          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/60 w-5 h-5" />
           <Input
             placeholder="Search for spiritual guides..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-12 pr-4 py-3 bg-gray-800 border-gray-600 text-white placeholder:text-gray-400 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 rounded-xl shadow-lg"
+            className="pl-12 pr-4 py-3 bg-black border-white/30 text-white placeholder:text-white/60 focus:border-white focus:ring-2 focus:ring-white/20 rounded-xl shadow-2xl"
           />
         </div>
 
@@ -186,11 +188,11 @@ const Guides = () => {
                 variant={selectedFilter === filter ? "default" : "outline"}
                 size="sm"
                 onClick={() => setSelectedFilter(filter)}
-                className={`whitespace-nowrap px-4 py-2 ${
-                  selectedFilter === filter
-                    ? "bg-orange-600 hover:bg-orange-700 text-white shadow-lg"
-                    : "bg-gray-800 border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white"
-                }`}
+                        className={`whitespace-nowrap px-4 py-2 transition-all duration-300 ${
+                          selectedFilter === filter
+                            ? "bg-white text-black font-semibold shadow-2xl hover:bg-gray-200"
+                            : "bg-black border-white/30 text-white/80 hover:bg-white/10 hover:text-white hover:border-white/50"
+                        }`}
               >
                 {filter}
               </Button>
@@ -202,11 +204,11 @@ const Guides = () => {
         <section>
           <div className="grid grid-cols-2 gap-4">
             {filteredTeachers.map((teacher) => (
-              <Card key={teacher.id} className="bg-gray-800 border-gray-700 overflow-hidden hover:bg-gray-700 transition-all duration-300 hover:shadow-xl hover:shadow-orange-500/10 group cursor-pointer">
+                      <Card key={teacher.id} className="bg-black border-white/20 overflow-hidden hover:bg-white/5 transition-all duration-300 hover:shadow-2xl hover:shadow-white/10 group cursor-pointer">
                 <CardContent className="p-4">
                   {/* Three dots menu */}
                   <div className="flex justify-end mb-3">
-                    <Button variant="ghost" size="sm" className="p-1 text-gray-400 hover:bg-gray-600">
+                    <Button variant="ghost" size="sm" className="p-1 text-white/60 hover:bg-white/10 hover:text-white transition-all duration-300">
                       <MoreHorizontal className="w-4 h-4" />
                     </Button>
                   </div>
@@ -214,19 +216,19 @@ const Guides = () => {
                   {/* Circular Profile Picture */}
                   <div className="flex justify-center mb-4">
                     <div className="relative w-24 h-24">
-                      <img 
-                        src={teacher.image} 
-                        alt={teacher.name}
-                        className="w-24 h-24 rounded-full object-cover border-2 border-orange-400"
-                      />
+                              <img 
+                                src={teacher.image} 
+                                alt={teacher.name}
+                                className="w-24 h-24 rounded-full object-cover border-2 border-white/60"
+                              />
                       {/* Follow Button Overlay */}
                       <div className="absolute -bottom-2 -right-2">
                         <Button 
                           size="sm" 
-                          className={`text-xs px-3 py-1 rounded-full font-medium ${
+                          className={`text-xs px-3 py-1 rounded-full font-medium transition-all duration-300 ${
                             teacher.isFollowing 
-                              ? "bg-green-600 hover:bg-green-700 text-white" 
-                              : "bg-orange-600 hover:bg-orange-700 text-white"
+                              ? "bg-green-600 hover:bg-green-700 text-white shadow-lg" 
+                              : "bg-white text-black hover:bg-gray-200 text-black shadow-lg"
                           }`}
                         >
                           {teacher.isFollowing ? (
@@ -244,19 +246,19 @@ const Guides = () => {
                   
                   {/* Teacher Info */}
                   <div className="text-center">
-                    <h3 className="font-bold text-lg text-white mb-1 group-hover:text-orange-400 transition-colors duration-300">{teacher.name}</h3>
-                    <p className="text-sm text-gray-300 mb-2">{teacher.title}</p>
-                    <div className="flex items-center justify-center gap-2 text-xs text-orange-400">
-                      <div className="flex items-center gap-1">
-                        <Star className="w-3 h-3 fill-current text-orange-500" />
-                        <span>{teacher.rating}</span>
-                      </div>
-                      <span>•</span>
-                      <div className="flex items-center gap-1">
-                        <Users className="w-3 h-3" />
-                        <span>{teacher.followers}</span>
-                      </div>
-                    </div>
+                          <h3 className="font-bold text-lg text-white mb-1 group-hover:text-white transition-colors duration-300 drop-shadow-md">{teacher.name}</h3>
+                          <p className="text-sm text-white/80 mb-2">{teacher.title}</p>
+                          <div className="flex items-center justify-center gap-2 text-xs text-white/80">
+                            <div className="flex items-center gap-1">
+                              <Star className="w-3 h-3 fill-current text-white" />
+                              <span>{teacher.rating}</span>
+                            </div>
+                            <span>•</span>
+                            <div className="flex items-center gap-1">
+                              <Users className="w-3 h-3" />
+                              <span>{teacher.followers}</span>
+                            </div>
+                          </div>
                   </div>
                 </CardContent>
               </Card>
@@ -267,16 +269,16 @@ const Guides = () => {
         {/* Enhanced Empty State */}
         {filteredTeachers.length === 0 && (
           <div className="text-center py-16">
-            <div className="w-20 h-20 bg-gradient-to-br from-orange-600/20 to-amber-600/20 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Search className="w-10 h-10 text-orange-400" />
+            <div className="w-20 h-20 bg-gradient-to-br from-white/10 to-white/5 rounded-full flex items-center justify-center mx-auto mb-6">
+              <Search className="w-10 h-10 text-white" />
             </div>
             <h3 className="text-xl font-semibold text-white mb-3">No guides found</h3>
-            <p className="text-gray-300 mb-6 max-w-sm mx-auto">
+            <p className="text-white/70 mb-6 max-w-sm mx-auto">
               Try adjusting your search terms or explore different categories to discover spiritual teachers.
             </p>
             <Button 
               onClick={() => setSelectedFilter("Trending")}
-              className="bg-orange-600 hover:bg-orange-700 text-white"
+              className="bg-white text-black hover:bg-gray-200 font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:scale-105"
             >
               View Trending Guides
             </Button>

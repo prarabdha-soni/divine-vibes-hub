@@ -50,22 +50,6 @@ const Story = () => {
       ]
     },
     {
-      id: "3",
-      title: "Hindu Mythological Stories | AI Generated Series",
-      subtitle: "Modern AI-generated Hindu mythological content",
-      thumbnail: getYouTubeThumbnail("https://www.youtube.com/playlist?list=PLNIuI8ww83XXCt6nywG4WsQJQNvsNt3wd"),
-      duration: "2:15:00",
-      views: "3.2M",
-      category: "AI Series",
-      youtubeUrl: "https://www.youtube.com/playlist?list=PLNIuI8ww83XXCt6nywG4WsQJQNvsNt3wd",
-      episodes: [
-        { title: "AI Generated Ramayan", duration: "35:20" },
-        { title: "Digital Mahabharat", duration: "42:15" },
-        { title: "Virtual Krishna Leela", duration: "38:45" },
-        { title: "AI Shiva Stories", duration: "39:40" }
-      ]
-    },
-    {
       id: "4",
       title: "The Forgotten Warrior God Who Terrified Demons",
       subtitle: "The mysterious and powerful warrior deity",
@@ -98,69 +82,46 @@ const Story = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white">
+    <div className="min-h-screen bg-black text-white">
       <div className="px-4 py-6 space-y-6">
         {/* Story Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-white mb-3">Mysterious Stories</h1>
-          <p className="text-lg text-gray-300 mb-4">Epic tales and spiritual series</p>
-          <div className="w-20 h-1 bg-gradient-to-r from-orange-600 to-amber-600 mx-auto rounded-full"></div>
+          <h1 className="text-3xl font-bold text-white mb-3 drop-shadow-lg">Mysterious Stories</h1>
+          <p className="text-lg text-white/80 mb-4">Epic tales and spiritual series</p>
+          <div className="w-24 h-1 bg-white mx-auto rounded-full shadow-lg"></div>
         </div>
 
         {/* Story Series Grid */}
         <section>
-          <div className="space-y-6">
+          <div className="grid grid-cols-2 gap-4">
             {storySeries.map((series) => (
-              <div key={series.id} className="bg-gray-800 rounded-lg overflow-hidden hover:bg-gray-700 transition-all duration-300">
-                <div className="flex flex-col md:flex-row">
-                  {/* Series Thumbnail */}
-                  <div className="md:w-1/3 relative">
-                    <img 
-                      src={series.thumbnail} 
-                      alt={series.title}
-                      className="w-full h-48 md:h-full object-cover"
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 hover:opacity-100 transition-opacity duration-300">
-                      <Button 
-                        size="lg"
-                        className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg"
-                        onClick={() => setSelectedVideo(series)}
-                      >
-                        <Play className="w-6 h-6 mr-2" />
-                        Play Series
-                      </Button>
-                    </div>
-                    <div className="absolute top-4 right-4 bg-black/80 text-white text-sm px-3 py-1 rounded-full font-bold">
-                      {series.duration}
+              <div key={series.id} className="bg-black border border-white/20 rounded-lg overflow-hidden hover:bg-white/5 transition-all duration-300 hover:shadow-2xl hover:shadow-white/10">
+                <div className="relative w-full h-64">
+                  <img 
+                    src={series.thumbnail} 
+                    alt={series.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                       onClick={() => setSelectedVideo(series)}>
+                    <div className="bg-white rounded-full p-4 hover:bg-gray-200 transition-all duration-300 shadow-2xl hover:scale-110">
+                      <Play className="w-8 h-8 text-black" />
                     </div>
                   </div>
-                  
-                  {/* Series Info */}
-                  <div className="md:w-2/3 p-6">
-                    <div className="flex items-start justify-between mb-4">
-                      <div>
-                        <h3 className="text-2xl font-bold text-white mb-2">{series.title}</h3>
-                        <p className="text-gray-300 mb-3">{series.subtitle}</p>
-                        <div className="flex items-center gap-4 text-sm text-gray-400">
-                          <span>{series.views} views</span>
-                          <span className="bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-bold">
-                            {series.category}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    {/* Episodes List */}
-                    <div className="space-y-2">
-                      <h4 className="text-lg font-semibold text-white mb-3">Episodes:</h4>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                        {series.episodes.map((episode, index) => (
-                          <div key={index} className="flex items-center justify-between bg-gray-700 rounded-lg p-3 hover:bg-gray-600 transition-colors duration-200">
-                            <span className="text-white text-sm font-medium">{episode.title}</span>
-                            <span className="text-orange-400 text-xs font-bold">{episode.duration}</span>
-                          </div>
-                        ))}
-                      </div>
+                  <div className="absolute top-3 right-3 bg-black/90 text-white text-xs px-3 py-1 rounded-full font-medium shadow-lg">
+                    {series.duration}
+                  </div>
+                  <div className="absolute bottom-3 left-3 bg-white text-black text-xs px-3 py-1 rounded-full font-semibold shadow-lg">
+                    {series.category}
+                  </div>
+                </div>
+                <div className="p-3">
+                  <h3 className="text-base font-bold text-white mb-1 drop-shadow-md leading-tight">{series.title}</h3>
+                  <p className="text-white/80 text-xs mb-2 line-clamp-2">{series.subtitle}</p>
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="text-white font-semibold">{series.category}</span>
+                    <div className="flex items-center text-white/60">
+                      <span>{series.views} views</span>
                     </div>
                   </div>
                 </div>
@@ -171,15 +132,15 @@ const Story = () => {
 
         {/* Video Player Modal */}
         {selectedVideo && (
-          <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-[100] p-4">
-            <div className="bg-gray-900 rounded-lg w-full max-w-5xl max-h-[95vh] overflow-hidden shadow-2xl">
-              <div className="flex items-center justify-between p-4 border-b border-gray-700">
+          <div className="fixed inset-0 bg-black/95 flex items-center justify-center z-[100] p-4">
+            <div className="bg-black border border-white/20 rounded-lg w-full max-w-5xl max-h-[95vh] overflow-hidden shadow-2xl">
+              <div className="flex items-center justify-between p-4 border-b border-white/20">
                 <h3 className="text-lg font-semibold text-white">{selectedVideo.title}</h3>
                 <Button 
                   variant="ghost" 
                   size="sm" 
                   onClick={() => setSelectedVideo(null)}
-                  className="text-gray-400 hover:text-white hover:bg-gray-700"
+                  className="text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300"
                 >
                   <X className="w-5 h-5" />
                 </Button>
@@ -194,9 +155,9 @@ const Story = () => {
                   allowFullScreen
                 />
               </div>
-              <div className="p-4 bg-gray-800">
-                <p className="text-sm text-gray-300 mb-2">{selectedVideo.subtitle}</p>
-                <div className="flex items-center gap-4 text-xs text-gray-400">
+              <div className="p-4 bg-black border-t border-white/20">
+                <p className="text-sm text-white/80 mb-2">{selectedVideo.subtitle}</p>
+                <div className="flex items-center gap-4 text-xs text-white/60">
                   <span>{selectedVideo.duration}</span>
                   <span>{selectedVideo.views} views</span>
                   <span>{selectedVideo.category}</span>

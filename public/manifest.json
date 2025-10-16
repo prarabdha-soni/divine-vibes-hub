@@ -1,0 +1,73 @@
+{
+  "name": "Sanatan Secret - Spiritual Content Hub",
+  "short_name": "Sanatan Secret",
+  "description": "Spiritual content platform for Sanatani teachings, stories, and wisdom",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a1a1a",
+  "theme_color": "#f97316",
+  "orientation": "portrait",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["entertainment", "education", "lifestyle"],
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Kids Videos",
+      "short_name": "Kids",
+      "description": "Watch spiritual kids content",
+      "url": "/kids",
+      "icons": [
+        {
+          "src": "/icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Spiritual Guides",
+      "short_name": "Guides",
+      "description": "Browse spiritual teachers",
+      "url": "/guides",
+      "icons": [
+        {
+          "src": "/icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Mysterious Stories",
+      "short_name": "Stories",
+      "description": "Watch epic spiritual stories",
+      "url": "/story",
+      "icons": [
+        {
+          "src": "/icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}

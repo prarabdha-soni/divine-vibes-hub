@@ -3,22 +3,54 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Divine Harmony - Radha Krishna Streaming</title>
-    <meta name="description" content="Experience the eternal love of Radha Krishna through sacred teachings, devotional music, and spiritual content for all ages" />
-    <meta name="author" content="Divine Harmony" />
+    <title>Sanatan Secret - Spiritual Content Hub</title>
+    <meta name="description" content="Spiritual content platform for Sanatani teachings, stories, and wisdom" />
+    <meta name="author" content="Sanatan Secret" />
 
-    <meta property="og:title" content="Divine Harmony - Radha Krishna Streaming" />
-    <meta property="og:description" content="Stream Premand Maharaj teachings, kids stories, bhajans, and sacred wisdom" />
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#f97316" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Sanatan Secret" />
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="/icon-192x192.png" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512x512.png" />
+
+    <meta property="og:title" content="Sanatan Secret - Spiritual Content Hub" />
+    <meta property="og:description" content="Spiritual content platform for Sanatani teachings, stories, and wisdom" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta property="og:image" content="/icon-512x512.png" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta name="twitter:title" content="Sanatan Secret" />
+    <meta name="twitter:description" content="Spiritual content platform for Sanatani teachings" />
+    <meta name="twitter:image" content="/icon-512x512.png" />
   </head>
 
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+              console.log('SW registered: ', registration);
+            })
+            .catch((registrationError) => {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+    </script>
   </body>
 </html>

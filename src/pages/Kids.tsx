@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Play, Search, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -17,27 +17,6 @@ const Kids = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-  const [videoRefs, setVideoRefs] = useState({});
-
-  // Auto-play first video when Kids tab is opened
-  React.useEffect(() => {
-    if (kidsVideos.length > 0 && !selectedVideo) {
-      setSelectedVideo(kidsVideos[0]);
-    }
-  }, []);
-
-  // Handle scroll to pause/play videos
-  const handleScroll = (event) => {
-    const container = event.target;
-    const scrollTop = container.scrollTop;
-    const videoHeight = window.innerHeight;
-    const newIndex = Math.round(scrollTop / videoHeight);
-    
-    if (newIndex !== currentVideoIndex) {
-      setCurrentVideoIndex(newIndex);
-    }
-  };
 
   const categories = ["All", "Bhajans", "Stories", "Learning", "Fun"];
 
@@ -85,7 +64,26 @@ const Kids = () => {
       category: "Stories",
       youtubeUrl: "https://www.youtube.com/watch?v=Q-qcB_OqKTU"
     },
-    // Removed 3rd and 5th videos as requested
+    {
+      id: "5",
+      title: "Krishna Kids Bhajan - Hare Krishna Hare Rama",
+      subtitle: "Devotional Songs for Children",
+      thumbnail: getYouTubeThumbnail("https://www.youtube.com/watch?v=example1"),
+      duration: "0:25",
+      views: "950K",
+      category: "Bhajans",
+      youtubeUrl: "https://www.youtube.com/watch?v=example1"
+    },
+    {
+      id: "6",
+      title: "Little Krishna Adventures - Cartoon Series",
+      subtitle: "Fun Krishna Stories for Kids",
+      thumbnail: getYouTubeThumbnail("https://www.youtube.com/watch?v=example2"),
+      duration: "0:20",
+      views: "1.2M",
+      category: "Stories",
+      youtubeUrl: "https://www.youtube.com/watch?v=example2"
+    }
   ];
 
   const filteredVideos = kidsVideos.filter(video =>
@@ -93,58 +91,150 @@ const Kids = () => {
   );
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden">
-      {/* Instagram Reels Style - Full Screen Videos */}
-      <div 
-        className="h-screen overflow-y-auto snap-y snap-mandatory"
-        onScroll={handleScroll}
-      >
-        {kidsVideos.map((video, index) => {
-          // Only autoplay the current video, pause others
-          const isCurrentVideo = index === currentVideoIndex;
-          const embedUrl = isCurrentVideo 
-            ? getYouTubeEmbedUrl(video.youtubeUrl)
-            : getYouTubeEmbedUrl(video.youtubeUrl).replace('autoplay=1', 'autoplay=0');
-          
-          return (
-            <div 
-              key={video.id} 
-              className="h-screen w-full snap-start relative flex items-center justify-center"
-            >
-              {/* Full Screen Video */}
-              <div className="absolute inset-0 w-full h-full">
+    <div className="min-h-screen bg-black text-white">
+      <div className="px-4 py-6 space-y-6">
+        {/* Kids Header */}
+        <div className="text-center mb-8">
+          <h1 className="text-5xl font-bold text-white mb-3 drop-shadow-lg">Kids Spiritual Content</h1>
+          <p className="text-xl text-white/80 mb-4">Fun and educational content for children</p>
+          <div className="w-24 h-1 bg-white mx-auto rounded-full shadow-lg"></div>
+        </div>
+
+        {/* Search Bar */}
+        <div className="relative max-w-md mx-auto">
+          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/60 w-5 h-5" />
+          <Input
+            placeholder="Search for kids content..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pl-12 pr-4 py-3 bg-black border-white/30 text-white placeholder:text-white/60 focus:border-white focus:ring-2 focus:ring-white/20 rounded-xl shadow-2xl"
+          />
+        </div>
+
+        {/* Category Filter Chips */}
+        <section>
+          <div className="flex gap-2 overflow-x-auto pb-2">
+            {categories.map((category) => (
+              <Button
+                key={category}
+                variant={selectedCategory === category ? "default" : "outline"}
+                size="sm"
+                onClick={() => setSelectedCategory(category)}
+                className={`whitespace-nowrap px-4 py-2 transition-all duration-300 ${
+                  selectedCategory === category
+                    ? "bg-white text-black font-semibold shadow-2xl hover:bg-gray-200"
+                    : "bg-black border-white/30 text-white/80 hover:bg-white/10 hover:text-white hover:border-white/50"
+                }`}
+              >
+                {category}
+              </Button>
+            ))}
+          </div>
+        </section>
+
+        {/* Kids Videos Grid - 2 Column Format */}
+        <section>
+          <div className="grid grid-cols-2 gap-4">
+            {filteredVideos.map((video) => (
+              <Card key={video.id} className="bg-black border-white/20 overflow-hidden hover:bg-white/5 transition-all duration-300 hover:shadow-2xl hover:shadow-white/10 group cursor-pointer">
+                <CardContent className="p-0">
+                  <div className="relative w-full h-64">
+                    <img
+                      src={video.thumbnail}
+                      alt={video.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                         onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          setSelectedVideo(video);
+                         }}>
+                      <div className="bg-white rounded-full p-4 hover:bg-gray-200 transition-all duration-300 shadow-2xl hover:scale-110">
+                        <Play className="w-8 h-8 text-black" />
+                      </div>
+                    </div>
+                    <div className="absolute top-3 left-3 bg-black/90 text-white text-xs px-3 py-1 rounded-full font-medium shadow-lg">
+                      {video.duration}
+                    </div>
+                    <div className="absolute top-3 right-3 bg-black/90 text-white text-xs px-3 py-1 rounded-full font-medium shadow-lg">
+                      {video.views}
+                    </div>
+                    <div className="absolute bottom-3 left-3 bg-white text-black text-xs px-3 py-1 rounded-full font-semibold shadow-lg">
+                      {video.category}
+                    </div>
+                  </div>
+                  <div className="p-3">
+                    <h3 className="text-base font-bold text-white mb-1 drop-shadow-md leading-tight">{video.title}</h3>
+                    <p className="text-white/80 text-xs mb-2 line-clamp-2">{video.subtitle}</p>
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="text-white font-semibold">{video.category}</span>
+                      <div className="flex items-center text-white/60">
+                        <span>{video.views} views</span>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        {/* Video Player Modal */}
+        {selectedVideo && (
+          <div className="fixed inset-0 bg-black/95 flex items-center justify-center z-[100] p-4">
+            <div className="bg-black border border-white/20 rounded-lg w-full max-w-5xl max-h-[95vh] overflow-hidden shadow-2xl">
+              <div className="flex items-center justify-between p-4 border-b border-white/20">
+                <h3 className="text-lg font-semibold text-white">{selectedVideo.title}</h3>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setSelectedVideo(null)}
+                  className="text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300"
+                >
+                  <X className="w-5 h-5" />
+                </Button>
+              </div>
+              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
                 <iframe
-                  src={embedUrl}
-                  title={video.title}
-                  className="w-full h-full"
+                  src={getYouTubeEmbedUrl(selectedVideo.youtubeUrl)}
+                  title={selectedVideo.title}
+                  className="absolute top-0 left-0 w-full h-full"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 />
               </div>
-              
-              {/* Video Info Overlay - Bottom */}
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                <h3 className="text-xl font-bold text-white mb-2">{video.title}</h3>
-                <p className="text-gray-300 text-sm">{video.subtitle}</p>
-              </div>
-              
-              {/* Video Number Indicator - Top Right */}
-              <div className="absolute top-6 right-6 bg-black/50 text-white text-sm px-3 py-1 rounded-full">
-                {index + 1} / {kidsVideos.length}
-              </div>
-              
-              {/* Play/Pause Indicator */}
-              {!isCurrentVideo && (
-                <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-                  <div className="bg-orange-600 rounded-full p-4">
-                    <Play className="w-8 h-8 text-white" />
-                  </div>
+              <div className="p-4 bg-black border-t border-white/20">
+                <p className="text-sm text-white/80 mb-2">{selectedVideo.subtitle}</p>
+                <div className="flex items-center gap-4 text-xs text-white/60">
+                  <span>{selectedVideo.duration}</span>
+                  <span>{selectedVideo.views} views</span>
+                  <span>{selectedVideo.category}</span>
                 </div>
-              )}
+              </div>
             </div>
-          );
-        })}
+          </div>
+        )}
+
+        {/* Empty State */}
+        {filteredVideos.length === 0 && (
+          <div className="text-center py-16">
+            <div className="w-20 h-20 bg-gradient-to-br from-white/10 to-white/5 rounded-full flex items-center justify-center mx-auto mb-6">
+              <Play className="w-10 h-10 text-white" />
+            </div>
+            <h3 className="text-xl font-semibold text-white mb-3">No videos found</h3>
+            <p className="text-white/70 mb-6 max-w-sm mx-auto">
+              Try adjusting your search terms or explore different categories to discover kids content.
+            </p>
+            <Button 
+              onClick={() => setSelectedCategory("All")}
+              className="bg-white text-black hover:bg-gray-200 font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:scale-105"
+            >
+              View All Content
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );

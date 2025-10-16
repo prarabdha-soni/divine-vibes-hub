@@ -15,6 +15,7 @@ import baba4 from "@/assets/baba-4.png";
 import baba5 from "@/assets/baba-5.png";
 import baba6 from "@/assets/baba-6.png";
 import osho from "@/assets/osho.png";
+import gaur from "@/assets/gaur.png";
 import premanand1 from "@/assets/premanand-1.jpg";
 import premanand2 from "@/assets/premanand-2.jpg";
 import premanand3 from "@/assets/premanand-3.jpg";
@@ -56,6 +57,8 @@ const Home = () => {
         return video.channel === "Premand Maharaj";
       } else if (selectedTeacher === "Osho") {
         return video.channel === "OSHO Hindi";
+      } else if (selectedTeacher === "Gaur Gopal Das") {
+        return video.channel === "Gaur Gopal Das";
       }
       return true;
     });
@@ -86,6 +89,13 @@ const Home = () => {
       title: "Mystic & Philosopher",
       image: osho,
       followers: "2.5M"
+    },
+    {
+      id: "4",
+      name: "Gaur Gopal Das",
+      title: "Monk & Motivator",
+      image: gaur,
+      followers: "3.2M"
     }
   ];
 
@@ -200,11 +210,61 @@ const Home = () => {
       views: "1.5M",
       channel: "OSHO Hindi",
       youtubeUrl: "https://www.youtube.com/watch?v=X1E6UJeQS3U"
+    },
+    {
+      id: "17",
+      title: "Remove NEGATIVITY From Your MIND | Gaur Gopal Das",
+      subtitle: "Gaur Gopal Das - Mind Transformation",
+      thumbnail: getYouTubeThumbnail("https://www.youtube.com/watch?v=4-ylnyARFHE"),
+      duration: "15:30",
+      views: "2.8M",
+      channel: "Gaur Gopal Das",
+      youtubeUrl: "https://www.youtube.com/watch?v=4-ylnyARFHE"
+    },
+    {
+      id: "18",
+      title: "What The Ocean Can Teach You About Life | Gaur Gopal Das",
+      subtitle: "Gaur Gopal Das - Life Lessons from Ocean",
+      thumbnail: getYouTubeThumbnail("https://www.youtube.com/watch?v=nm_0ycom8x4"),
+      duration: "12:45",
+      views: "1.9M",
+      channel: "Gaur Gopal Das",
+      youtubeUrl: "https://www.youtube.com/watch?v=nm_0ycom8x4"
+    },
+    {
+      id: "19",
+      title: "Don't lose hope! Trust The Timing Of The Universe! | Gaur Gopal Das",
+      subtitle: "Gaur Gopal Das - Hope & Trust",
+      thumbnail: getYouTubeThumbnail("https://www.youtube.com/watch?v=RQy3MqPMSqY"),
+      duration: "18:20",
+      views: "3.1M",
+      channel: "Gaur Gopal Das",
+      youtubeUrl: "https://www.youtube.com/watch?v=RQy3MqPMSqY"
+    },
+    {
+      id: "20",
+      title: "Transform Your Life with Gratitude: Gaur Gopal Das",
+      subtitle: "Gaur Gopal Das - Gratitude Practice",
+      thumbnail: getYouTubeThumbnail("https://www.youtube.com/watch?v=nymVOJi8H_I"),
+      duration: "14:15",
+      views: "2.3M",
+      channel: "Gaur Gopal Das",
+      youtubeUrl: "https://www.youtube.com/watch?v=nymVOJi8H_I"
+    },
+    {
+      id: "21",
+      title: "Women Who Inspire Me | Gaur Gopal Das",
+      subtitle: "Gaur Gopal Das - Inspiring Women",
+      thumbnail: getYouTubeThumbnail("https://www.youtube.com/watch?v=Q6VqaQayk0Y"),
+      duration: "16:50",
+      views: "1.7M",
+      channel: "Gaur Gopal Das",
+      youtubeUrl: "https://www.youtube.com/watch?v=Q6VqaQayk0Y"
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white">
+    <div className="min-h-screen bg-black text-white">
       <div className="px-4 py-6 space-y-8">
         {/* Featured Hero Videos Carousel */}
         <section>
@@ -247,7 +307,15 @@ const Home = () => {
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  setSelectedVideo(video);
+                  
+                  // Check if it's an Instagram video
+                  if (video.youtubeUrl.includes('instagram.com')) {
+                    // Open Instagram video in new tab
+                    window.open(video.youtubeUrl, '_blank');
+                  } else {
+                    // Open YouTube video in modal
+                    setSelectedVideo(video);
+                  }
                 }}
               >
                 <div className="relative min-h-[50vh] rounded-lg overflow-hidden">
@@ -267,7 +335,7 @@ const Home = () => {
                   <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
                     <Button 
                       size="lg" 
-                      className="bg-white text-black hover:bg-gray-100 px-8 py-4 text-lg font-semibold rounded-xl shadow-lg"
+                      className="bg-white text-black hover:bg-gray-200 px-8 py-4 text-lg font-semibold rounded-lg shadow-2xl transition-all duration-300 hover:scale-105"
                     >
                       <Play className="w-5 h-5 mr-2" />
                       Play
@@ -276,10 +344,10 @@ const Home = () => {
                   
                   {/* Title Overlay */}
                   <div className="absolute bottom-20 left-4 right-4">
-                    <h3 className="text-white font-bold text-lg leading-tight mb-2">
+                    <h3 className="text-white font-bold text-xl leading-tight mb-2 drop-shadow-lg">
                       {video.title}
                     </h3>
-                    <p className="text-white/90 text-sm">
+                    <p className="text-white/95 text-sm drop-shadow-md">
                       {video.subtitle}
                     </p>
                   </div>
@@ -291,12 +359,12 @@ const Home = () => {
 
         {/* Enhanced Discover Guides Section */}
         <section>
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-white">Discover Spiritual Guides</h2>
-            <Button variant="outline" size="sm" className="text-orange-400 border-orange-500/50 hover:bg-orange-500/10">
-              View All
-            </Button>
-          </div>
+                  <div className="flex items-center justify-between mb-6">
+                    <h2 className="text-3xl font-bold text-white">Discover Spiritual Guides</h2>
+                    <Button variant="outline" size="sm" className="text-white border-white/30 hover:bg-white/10 hover:border-white/50 transition-all duration-300">
+                      View All
+                    </Button>
+                  </div>
            <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
              {spiritualTeachers.map((teacher) => (
                <div 
@@ -308,12 +376,12 @@ const Home = () => {
                  }`}
                  onClick={() => setSelectedTeacher(selectedTeacher === teacher.name ? null : teacher.name)}
                >
-                <div className="relative w-28 h-28 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <Avatar className={`w-28 h-28 border-4 transition-all duration-300 shadow-xl ${
-                    selectedTeacher === teacher.name 
-                      ? 'border-orange-500 shadow-orange-500/60 ring-4 ring-orange-500/30' 
-                      : 'border-orange-400/60 group-hover:border-orange-400 group-hover:shadow-orange-500/40'
-                  }`}>
+                        <div className="relative w-28 h-28 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                          <Avatar className={`w-28 h-28 border-4 transition-all duration-300 shadow-2xl ${
+                            selectedTeacher === teacher.name 
+                              ? 'border-white shadow-white/60 ring-4 ring-white/30' 
+                              : 'border-white/40 group-hover:border-white/60 group-hover:shadow-white/40'
+                          }`}>
                     <AvatarImage src={teacher.image} alt={teacher.name} className="object-cover" />
                     <AvatarFallback className="bg-gradient-to-br from-gray-700 to-gray-800 text-orange-400 font-bold text-lg">
                       {teacher.name.split(' ').map(n => n[0]).join('')}
@@ -344,10 +412,10 @@ const Home = () => {
                     {teacher.name}
                   </h3>
                   <p className="text-sm text-gray-300 mb-2 leading-tight">{teacher.title}</p>
-                  <div className="flex items-center justify-center gap-1 text-sm text-orange-400 font-medium">
-                    <div className="w-1.5 h-1.5 bg-orange-400 rounded-full"></div>
-                    <span>{teacher.followers} followers</span>
-                  </div>
+                          <div className="flex items-center justify-center gap-1 text-sm text-white/80 font-medium">
+                            <div className="w-1.5 h-1.5 bg-white/80 rounded-full"></div>
+                            <span>{teacher.followers} followers</span>
+                          </div>
                 </div>
               </div>
             ))}
@@ -356,12 +424,12 @@ const Home = () => {
 
         {/* Maharaj Teachings Section */}
         <section>
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-white">Maharaj Teachings</h2>
-            <Button variant="ghost" size="sm" className="text-orange-400 hover:text-orange-300">
-              See All &gt;
-            </Button>
-          </div>
+                  <div className="flex items-center justify-between mb-6">
+                    <h2 className="text-3xl font-bold text-white">Maharaj Teachings</h2>
+                    <Button variant="ghost" size="sm" className="text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300">
+                      See All &gt;
+                    </Button>
+                  </div>
                   
           
           {/* Horizontal Scroll Video Cards */}
@@ -382,25 +450,25 @@ const Home = () => {
                   {/* Dark Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent rounded-lg" />
                   
-                  {/* Top Left - Category */}
-                  <div className="absolute top-3 left-3">
-                    <span className="text-xs text-white/90 bg-black/50 px-2 py-1 rounded">
-                      {video.channel === "Pradeep Mishra Official" ? "Shiv Katha" : 
-                       video.channel === "Premand Maharaj" ? "एकांतिक वार्तालाप & दर्शन" :
-                       video.channel === "OSHO Hindi" ? "Meditation & Philosophy" : "Spiritual Content"}
-                    </span>
-                  </div>
+                          {/* Top Left - Category */}
+                          <div className="absolute top-3 left-3">
+                            <span className="text-xs text-white bg-black/80 px-3 py-1 rounded-full font-medium">
+                              {video.channel === "Pradeep Mishra Official" ? "Shiv Katha" : 
+                               video.channel === "Premand Maharaj" ? "एकांतिक वार्तालाप & दर्शन" :
+                               video.channel === "OSHO Hindi" ? "Meditation & Philosophy" : "Spiritual Content"}
+                            </span>
+                          </div>
                   
                   {/* Top Right - Duration */}
                   <div className="absolute top-3 right-3">
-                    <span className="text-xs text-white bg-black/70 px-2 py-1 rounded font-medium">
+                    <span className="text-xs text-white bg-black/80 px-3 py-1 rounded-full font-medium">
                       {video.duration}
                     </span>
                   </div>
                   
                   {/* Bottom Left - Date/Episode */}
                   <div className="absolute bottom-3 left-3">
-                    <span className="text-xs text-white/90 bg-black/50 px-2 py-1 rounded">
+                    <span className="text-xs text-white bg-black/80 px-3 py-1 rounded-full font-medium">
                       {video.channel === "Pradeep Mishra Official" ? "Live Katha" : 
                        video.channel === "Premand Maharaj" ? "06 जुलाई 2025 #962" :
                        video.channel === "OSHO Hindi" ? "OSHO Wisdom" : "Spiritual Content"}
@@ -409,7 +477,7 @@ const Home = () => {
                   
                   {/* Main Title Overlay */}
                   <div className="absolute bottom-12 left-3 right-3">
-                    <h3 className="text-white font-bold text-sm leading-tight">
+                    <h3 className="text-white font-bold text-base leading-tight drop-shadow-lg">
                       {video.title}
                     </h3>
                   </div>
@@ -417,7 +485,7 @@ const Home = () => {
                 
                 {/* Title Below Thumbnail */}
                 <div className="mt-3">
-                  <h4 className="text-white text-sm font-medium">
+                  <h4 className="text-white text-base font-semibold leading-tight">
                     {video.channel === "Pradeep Mishra Official" ? video.title : 
                      video.channel === "Premand Maharaj" ? `#962 Ekantik Vartalaap & Darshan / 06-07-2025` :
                      video.channel === "OSHO Hindi" ? video.title : video.title}
@@ -430,16 +498,16 @@ const Home = () => {
                   {/* Enhanced Empty State */}
                   {getFilteredVideos().length === 0 && (
                     <div className="text-center py-16">
-                      <div className="w-20 h-20 bg-gradient-to-br from-orange-600/20 to-amber-600/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <Play className="w-10 h-10 text-orange-400" />
+                      <div className="w-20 h-20 bg-gradient-to-br from-white/10 to-white/5 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <Play className="w-10 h-10 text-white" />
                       </div>
-                      <h3 className="text-xl font-semibold text-orange-900 mb-3">No videos found</h3>
-                      <p className="text-orange-700 mb-6 max-w-sm mx-auto">
+                      <h3 className="text-xl font-semibold text-white mb-3">No videos found</h3>
+                      <p className="text-white/70 mb-6 max-w-sm mx-auto">
                         Try selecting a different spiritual teacher or explore all featured content.
                       </p>
                       <Button
                         onClick={() => setSelectedTeacher(null)}
-                        className="bg-orange-600 hover:bg-orange-700 text-white"
+                        className="bg-white text-black hover:bg-gray-200 font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:scale-105"
                       >
                         View All Content
                       </Button>
@@ -449,32 +517,46 @@ const Home = () => {
 
         {/* Video Player Modal */}
         {selectedVideo && (
-          <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-[100] p-4">
-            <div className="bg-gray-900 rounded-lg w-full max-w-5xl max-h-[95vh] overflow-hidden shadow-2xl">
-              <div className="flex items-center justify-between p-4 border-b border-gray-700">
+          <div className="fixed inset-0 bg-black/95 flex items-center justify-center z-[100] p-4">
+            <div className="bg-black border border-white/20 rounded-lg w-full max-w-5xl max-h-[95vh] overflow-hidden shadow-2xl">
+              <div className="flex items-center justify-between p-4 border-b border-white/20">
                 <h3 className="text-lg font-semibold text-white">{selectedVideo.title}</h3>
                 <Button 
                   variant="ghost" 
                   size="sm" 
                   onClick={() => setSelectedVideo(null)}
-                  className="text-gray-400 hover:text-white hover:bg-gray-700"
+                  className="text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300"
                 >
                   <X className="w-5 h-5" />
                 </Button>
               </div>
               <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-                <iframe
-                  src={getYouTubeEmbedUrl(selectedVideo.youtubeUrl)}
-                  title={selectedVideo.title}
-                  className="absolute top-0 left-0 w-full h-full"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
+                {selectedVideo.youtubeUrl.includes('instagram.com') ? (
+                  <div className="absolute inset-0 flex items-center justify-center bg-black">
+                    <div className="text-center">
+                      <p className="text-white text-lg mb-4">Instagram videos open in new tab</p>
+                      <Button 
+                        onClick={() => window.open(selectedVideo.youtubeUrl, '_blank')}
+                        className="bg-white text-black hover:bg-gray-200 font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:scale-105"
+                      >
+                        Open Instagram Video
+                      </Button>
+                    </div>
+                  </div>
+                ) : (
+                  <iframe
+                    src={getYouTubeEmbedUrl(selectedVideo.youtubeUrl)}
+                    title={selectedVideo.title}
+                    className="absolute top-0 left-0 w-full h-full"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                )}
               </div>
-              <div className="p-4 bg-gray-800">
-                <p className="text-sm text-gray-300 mb-2">{selectedVideo.subtitle}</p>
-                <div className="flex items-center gap-4 text-xs text-gray-400">
+              <div className="p-4 bg-black border-t border-white/20">
+                <p className="text-sm text-white/80 mb-2">{selectedVideo.subtitle}</p>
+                <div className="flex items-center gap-4 text-xs text-white/60">
                   <span>{selectedVideo.duration}</span>
                   <span>{selectedVideo.views} views</span>
                   <span>{selectedVideo.channel}</span>
