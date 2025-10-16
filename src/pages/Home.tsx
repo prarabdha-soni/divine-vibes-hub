@@ -14,6 +14,7 @@ import baba3 from "@/assets/baba-3.png";
 import baba4 from "@/assets/baba-4.png";
 import baba5 from "@/assets/baba-5.png";
 import baba6 from "@/assets/baba-6.png";
+import osho from "@/assets/osho.png";
 import premanand1 from "@/assets/premanand-1.jpg";
 import premanand2 from "@/assets/premanand-2.jpg";
 import premanand3 from "@/assets/premanand-3.jpg";
@@ -36,7 +37,7 @@ const Home = () => {
   // Function to extract YouTube video ID and create embedded URL
   const getYouTubeEmbedUrl = (url) => {
     const videoId = url.split('v=')[1]?.split('&')[0] || url.split('/').pop();
-    return `https://www.youtube.com/embed/${videoId}`;
+    return `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
   };
 
   // Function to get YouTube thumbnail URL
@@ -53,6 +54,8 @@ const Home = () => {
         return video.channel === "Pradeep Mishra Official";
       } else if (selectedTeacher === "Premand Maharaj") {
         return video.channel === "Premand Maharaj";
+      } else if (selectedTeacher === "Osho") {
+        return video.channel === "OSHO Hindi";
       }
       return true;
     });
@@ -77,6 +80,13 @@ const Home = () => {
       image: babaImages[1], // baba6
       followers: "1.8M"
     },
+    {
+      id: "3",
+      name: "Osho",
+      title: "Mystic & Philosopher",
+      image: osho,
+      followers: "2.5M"
+    }
   ];
 
   // Prominent video cards with YouTube links
@@ -170,29 +180,32 @@ const Home = () => {
       views: "850K",
       channel: "Premand Maharaj",
       youtubeUrl: "https://www.youtube.com/watch?v=XPmNxF938oY"
+    },
+    {
+      id: "15",
+      title: "OSHO Secret Meditation Technique | 4 Stages of Meditation",
+      subtitle: "OSHO Hindi Channel - Meditation Techniques",
+      thumbnail: getYouTubeThumbnail("https://www.youtube.com/watch?v=D3gEsHKna3Q"),
+      duration: "38:15",
+      views: "2.1M",
+      channel: "OSHO Hindi",
+      youtubeUrl: "https://www.youtube.com/watch?v=D3gEsHKna3Q"
+    },
+    {
+      id: "16",
+      title: "OSHO: मैं रोज-रोज तुम्हें समझाऊंगा (Daily Understanding)",
+      subtitle: "OSHO Hindi Channel - Daily Wisdom",
+      thumbnail: getYouTubeThumbnail("https://www.youtube.com/watch?v=X1E6UJeQS3U"),
+      duration: "42:45",
+      views: "1.5M",
+      channel: "OSHO Hindi",
+      youtubeUrl: "https://www.youtube.com/watch?v=X1E6UJeQS3U"
     }
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white">
-      {/* Netflix-style Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-amber-900/90 to-transparent backdrop-blur-sm">
-        <div className="flex items-center justify-between px-4 py-4">
-          <div className="flex items-center space-x-4">
-            <h1 className="text-2xl font-bold text-white">Sanatan Secret</h1>
-          </div>
-          <div className="flex items-center space-x-4">
-            <Button variant="ghost" size="sm" className="text-amber-100 hover:text-amber-300">
-              Browse
-            </Button>
-            <Button variant="ghost" size="sm" className="text-amber-100 hover:text-amber-300">
-              Search
-            </Button>
-          </div>
-        </div>
-      </header>
-
-      <div className="px-4 py-6 space-y-8 pt-20">
+      <div className="px-4 py-6 space-y-8">
         {/* Spiritual Hero Section */}
         <div 
           className="relative min-h-[60vh] flex items-center justify-center text-center cursor-pointer"
@@ -214,17 +227,21 @@ const Home = () => {
           {/* Background with YouTube thumbnail */}
           <div className="absolute inset-0">
             <img 
-              src={getYouTubeThumbnail("https://www.youtube.com/watch?v=RJM37jJSWRI")}
+              src={getYouTubeThumbnail("https://www.youtube.com/watch?v=CILtUr2shKM")}
               alt="Sanatan Love"
               className="w-full h-full object-cover"
             />
           </div>
           
-          {/* Play Button Overlay */}
-          <div className="absolute inset-0 flex items-center justify-center z-10">
-            <div className="bg-black/50 rounded-full p-6 hover:bg-black/70 transition-all duration-300">
-              <Play className="w-16 h-16 text-white" />
-            </div>
+          {/* Play Button at Bottom */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+            <Button 
+              size="lg" 
+              className="bg-white text-black hover:bg-gray-100 px-8 py-4 text-lg font-semibold rounded-xl shadow-lg"
+            >
+              <Play className="w-5 h-5 mr-2" />
+              Play
+            </Button>
           </div>
         </div>
 
@@ -324,7 +341,9 @@ const Home = () => {
                   {/* Top Left - Category */}
                   <div className="absolute top-3 left-3">
                     <span className="text-xs text-white/90 bg-black/50 px-2 py-1 rounded">
-                      {video.channel === "Pradeep Mishra Official" ? "Shiv Katha" : "एकांतिक वार्तालाप & दर्शन"}
+                      {video.channel === "Pradeep Mishra Official" ? "Shiv Katha" : 
+                       video.channel === "Premand Maharaj" ? "एकांतिक वार्तालाप & दर्शन" :
+                       video.channel === "OSHO Hindi" ? "Meditation & Philosophy" : "Spiritual Content"}
                     </span>
                   </div>
                   
@@ -338,7 +357,9 @@ const Home = () => {
                   {/* Bottom Left - Date/Episode */}
                   <div className="absolute bottom-3 left-3">
                     <span className="text-xs text-white/90 bg-black/50 px-2 py-1 rounded">
-                      {video.channel === "Pradeep Mishra Official" ? "Live Katha" : "06 जुलाई 2025 #962"}
+                      {video.channel === "Pradeep Mishra Official" ? "Live Katha" : 
+                       video.channel === "Premand Maharaj" ? "06 जुलाई 2025 #962" :
+                       video.channel === "OSHO Hindi" ? "OSHO Wisdom" : "Spiritual Content"}
                     </span>
                   </div>
                   
@@ -353,7 +374,9 @@ const Home = () => {
                 {/* Title Below Thumbnail */}
                 <div className="mt-3">
                   <h4 className="text-white text-sm font-medium">
-                    {video.channel === "Pradeep Mishra Official" ? video.title : `#962 Ekantik Vartalaap & Darshan / 06-07-2025`}
+                    {video.channel === "Pradeep Mishra Official" ? video.title : 
+                     video.channel === "Premand Maharaj" ? `#962 Ekantik Vartalaap & Darshan / 06-07-2025` :
+                     video.channel === "OSHO Hindi" ? video.title : video.title}
                   </h4>
                 </div>
               </div>
